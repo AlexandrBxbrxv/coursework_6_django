@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy, reverse
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from mailings.models import Client
 
@@ -28,3 +28,8 @@ class ClientUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('mailings:client_detail', args=[self.kwargs.get('pk')])
+
+
+class ClientDeleteView(DeleteView):
+    model = Client
+    success_url = reverse_lazy('mailings:clients')
