@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from mailings.models import Client
 
@@ -8,4 +8,8 @@ class HomeTemplateView(TemplateView):
 
 
 class ClientListView(ListView):
+    model = Client
+
+
+class ClientDetailView(DetailView):
     model = Client
