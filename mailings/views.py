@@ -1,9 +1,11 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
-from mailings.apps import MailingsConfig
-
-app_name = MailingsConfig.name
+from mailings.models import Client
 
 
 class HomeTemplateView(TemplateView):
     template_name = 'mailings/home.html'
+
+
+class ClientListView(ListView):
+    model = Client
