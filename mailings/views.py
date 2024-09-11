@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+from mailings.apps import MailingsConfig
+
+app_name = MailingsConfig.name
+
+
+class HomeTemplateView(TemplateView):
+    template_name = 'mailings/home.html'
