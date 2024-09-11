@@ -1,6 +1,10 @@
 {% extends 'mailings/base.html' %}
 {% block content %}
+
 <div class="container col-8 mt-3">
+  <div class="container mb-3">
+  <a class="btn btn-secondary" href="{% url 'mailings:client_create' %}">Добавить клиента</a>
+</div>
   <table class="table table-striped-columns">
     <thead>
     <tr>
