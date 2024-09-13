@@ -4,18 +4,21 @@
 <div class="container col-8 mt-3">
   <div class="container mb-3">
   <a class="btn btn-secondary" href="{% url 'mailings:home' %}">Добавить сообщение</a>
-</div>
+  </div>
     {% for object in object_list %}
-      <div class="card mt-3"  style="height: 200px;">
+      <div class="card mt-3">
         <div class="card-header">
           <h6>Тема: {{ object.msg_topic }}</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="height: 160px;">
           {% if object.msg_body|length > 500 %}
           <p>{{ object.msg_body|slice:":500" }}...</p>
           {% else %}
           <p>{{ object.msg_body }}</p>
           {% endif %}
+        </div>
+        <div class="card-footer">
+          <a class="btn btn-secondary" href="{% url 'mailings:mailing_message_detail' object.pk %}">Подробнее</a>
         </div>
       </div>
     {% endfor %}
