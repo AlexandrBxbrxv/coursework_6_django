@@ -42,3 +42,8 @@ class MailingMessageListView(ListView):
         context = super().get_context_data(**kwargs)
         context.update({'title': 'Сообщения для рассылки'})
         return context
+
+
+class MailingMessageDetailView(DetailView):
+    model = MailingMessage
+

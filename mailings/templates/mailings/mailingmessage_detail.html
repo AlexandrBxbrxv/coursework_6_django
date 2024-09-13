@@ -1,0 +1,24 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="container col-10 mt-3">
+    <div class="card">
+      <div class="card-header">
+        <h6>Тема: {{ object.msg_topic }}</h6>
+      </div>
+      <div class="row">
+
+      </div>
+      <div class="card-body">
+        <p>{{ object.msg_body }}</p>
+      </div>
+
+    </div>
+  </div>
+  <div class="container col-2 mt-3">
+    <a class="btn btn-secondary col-12 m-1" href="{% url 'mailings:mailing_messages' %}">Назад</a>
+    <a class="btn btn-warning col-12 m-1" href="{% url 'mailings:home' %}">Изменить</a>
+    <a class="btn btn-danger col-12 m-1" href="{% url 'mailings:home' %}">Удалить</a>
+  </div>
+</div>
+{% endblock %}
