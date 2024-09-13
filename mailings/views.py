@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from mailings.models import Client
+from mailings.models import Client, MailingMessage
 
 
 class HomeTemplateView(TemplateView):
@@ -33,3 +33,12 @@ class ClientUpdateView(UpdateView):
 class ClientDeleteView(DeleteView):
     model = Client
     success_url = reverse_lazy('mailings:clients')
+
+
+class MailingMessageListView(ListView):
+    model = MailingMessage
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({'title': 'Сообщения для рассылки'})
+        return context
