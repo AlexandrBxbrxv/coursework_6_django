@@ -1,32 +1,25 @@
 {% extends 'mailings/base.html' %}
 {% block content %}
-<div class="container col-8 mt-3">
-  <div class="card">
-    <div class="row">
-
-      <div class="container col-10">
-        <div class="card-body">
-          <p>
-            Ф.И.О: {{ object.full_name }}<br>
-            email: {{ object.email }}<br>
-            <br>
-            {% if object.comment %}
-            Комментарий:<br>
-            {{ object.comment }}
-            {% endif %}
-          </p>
-        </div>
+<div class="row">
+  <div class="container col-10 mt-3">
+    <div class="card">
+      <div class="card-body">
+        <p>
+          Ф.И.О: {{ object.full_name }}<br>
+          email: {{ object.email }}<br>
+          <br>
+          {% if object.comment %}
+          Комментарий:<br>
+          {{ object.comment }}
+          {% endif %}
+        </p>
       </div>
-
-      <div class="container col-2">
-        <div class="card-body">
-            <a class="btn btn-secondary col-12 m-1" href="{% url 'mailings:clients' %}">Назад</a>
-            <a class="btn btn-warning col-12 m-1" href="{% url 'mailings:client_update' object.pk %}">Изменить</a>
-            <a class="btn btn-danger col-12 m-1" href="{% url 'mailings:client_delete' object.pk %}">Удалить</a>
-        </div>
-      </div>
-
     </div>
+  </div>
+  <div class="container col-2 mt-3">
+    <a class="btn btn-secondary col-12 m-1" href="{% url 'mailings:clients' %}">Назад</a>
+    <a class="btn btn-warning col-12 m-1" href="{% url 'mailings:client_update' object.pk %}">Изменить</a>
+    <a class="btn btn-danger col-12 m-1" href="{% url 'mailings:client_delete' object.pk %}">Удалить</a>
   </div>
 </div>
 {% endblock %}
