@@ -3,7 +3,7 @@
 
 <div class="container col-8 mt-3">
   <div class="container mb-3">
-  <a class="btn btn-secondary" href="{% url 'mailings:home' %}">Добавить сообщение</a>
+  <a class="btn btn-secondary" href="{% url 'mailings:mailing_message_create' %}">Добавить сообщение</a>
   </div>
     {% for object in object_list %}
       <div class="card mt-3">
