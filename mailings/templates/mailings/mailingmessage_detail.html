@@ -17,8 +17,8 @@
   </div>
   <div class="container col-2 mt-3">
     <a class="btn btn-secondary col-12 m-1" href="{% url 'mailings:mailing_messages' %}">Назад</a>
-    <a class="btn btn-warning col-12 m-1" href="{% url 'mailings:home' %}">Изменить</a>
-    <a class="btn btn-danger col-12 m-1" href="{% url 'mailings:home' %}">Удалить</a>
+    <a class="btn btn-warning col-12 m-1" href="{% url 'mailings:mailing_message_update' object.pk %}">Изменить</a>
+    <a class="btn btn-danger col-12 m-1" href="{% url 'mailings:mailing_message_delete' object.pk %}">Удалить</a>
   </div>
 </div>
 {% endblock %}
