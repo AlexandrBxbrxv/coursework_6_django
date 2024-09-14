@@ -1,0 +1,29 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+<div class="container mt-1">
+  <div class="row">
+    <div class="container col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ object.msg_topic }}</h5>
+          <div class="card-text">
+            {% if object.msg_body|length > 250 %}
+            <p>{{ object.msg_body|slice:":250" }}...</p>
+            {% else %}
+            <p>{{ object.msg_body }}</p>
+            {% endif %}
+          </div>
+          <form method="post" class="card-footer">
+            {% csrf_token %}
+            <div class="row">
+              <button class="btn btn-danger col-4 m-1" type="submit">Удалить</button>
+              <a class="btn btn-secondary col-4 m-1" href="{% url 'mailings:mailing_messages' %}">Назад</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
