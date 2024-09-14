@@ -8,6 +8,7 @@ class HomeTemplateView(TemplateView):
     template_name = 'mailings/home.html'
 
 
+# CRUD Для клиентов рассылки #######################
 class ClientCreateView(CreateView):
     model = Client
     fields = ('email', 'full_name', 'comment',)
@@ -35,6 +36,13 @@ class ClientDeleteView(DeleteView):
     success_url = reverse_lazy('mailings:clients')
 
 
+# CRUD Для сообщений рассылки ###################################
+class MailingMessageCreateView(CreateView):
+    model = MailingMessage
+    fields = ('msg_topic', 'msg_body',)
+    success_url = reverse_lazy('mailings:mailing_messages')
+
+
 class MailingMessageListView(ListView):
     model = MailingMessage
 
@@ -48,8 +56,10 @@ class MailingMessageDetailView(DetailView):
     model = MailingMessage
 
 
-class MailingMessageCreateView(CreateView):
+class MailingMessageUpdateView(UpdateView):
     model = MailingMessage
     fields = ('msg_topic', 'msg_body',)
-    success_url = reverse_lazy('mailings:mailing_messages')
+
+    def get_success_url(self):
+        return reverse('mailings:mailing_message_detail', args=[self.kwargs.get('pk')])
 
