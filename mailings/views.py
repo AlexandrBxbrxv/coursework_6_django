@@ -47,3 +47,9 @@ class MailingMessageListView(ListView):
 class MailingMessageDetailView(DetailView):
     model = MailingMessage
 
+
+class MailingMessageCreateView(CreateView):
+    model = MailingMessage
+    fields = ('msg_topic', 'msg_body',)
+    success_url = reverse_lazy('mailings:mailing_messages')
+
