@@ -1,0 +1,28 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+
+<div class="container col-8 mt-3">
+  <div class="container mb-3">
+  <a class="btn btn-secondary" href="{% url 'mailings:client_create' %}">Добавить клиента</a>
+</div>
+  <table class="table table-striped-columns">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>Ф.И.О.</th>
+      <th>email</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for object in object_list %}
+    <tr>
+      <td>{{ object.pk }}</td>
+      <td><a href="{% url 'mailings:client_detail' object.pk %}">{{ object.full_name }}</a></td>
+      <td>{{ object.email }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
